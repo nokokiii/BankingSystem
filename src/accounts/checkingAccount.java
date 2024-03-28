@@ -1,4 +1,4 @@
-package src.main.accounts;
+package accounts;
 
 public class checkingAccount extends BankAccount {
     protected double transferFee;

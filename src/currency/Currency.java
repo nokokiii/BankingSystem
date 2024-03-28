@@ -1,4 +1,4 @@
-package src.main.currency;
+package currency;
 
 public class Currency {
     private final String name;

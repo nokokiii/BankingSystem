@@ -1,4 +1,4 @@
-package src.main.accounts;
+package accounts;
 
 public class CreditCard extends BankAccount {
     private double creditLimit;

@@ -1,5 +1,4 @@
-import src.main.accounts.SavingsAccount;
-import src.main.accounts.checkingAccount;
+import accounts.*;
 
 public class Main {
     public static void main(String[] args) {

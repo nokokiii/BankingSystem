@@ -1,4 +1,4 @@
-package src.main.accounts;
+package accounts;
 
 public class SavingsAccount extends BankAccount {
     private double interestRate;

@@ -1,4 +1,4 @@
-package src.main.accounts;
+package accounts;
 
 import java.util.concurrent.ThreadLocalRandom;
 

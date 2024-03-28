@@ -1,6 +1,6 @@
-package src.main.accounts;
+package accounts;
 
-import src.main.currency.Currency;
+import currency.Currency;
 
 public class ForeignAccount extends checkingAccount {
     private final Currency currency;
