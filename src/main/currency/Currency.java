@@ -1,3 +1,5 @@
+package src.main.currency;
+
 public class Currency {
     private final String name;
     private double exchangeRate;

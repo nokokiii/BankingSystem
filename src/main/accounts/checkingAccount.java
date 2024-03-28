@@ -1,3 +1,5 @@
+package src.main.accounts;
+
 public class checkingAccount extends BankAccount {
     protected double transferFee;
     protected double withdrawalFee;

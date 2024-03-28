@@ -1,3 +1,5 @@
+package src.main.accounts;
+
 public class SavingsAccount extends BankAccount {
     private double interestRate;
 

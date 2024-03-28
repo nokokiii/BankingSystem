@@ -1,3 +1,5 @@
+package src.main.accounts;
+
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class BankAccount {
