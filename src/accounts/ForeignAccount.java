@@ -2,7 +2,7 @@ package accounts;
 
 import currency.Currency;
 
-public class ForeignAccount extends checkingAccount {
+public class ForeignAccount extends CheckingAccount {
     private final Currency currency;
 
     public ForeignAccount(double balance, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit, Currency currency) {

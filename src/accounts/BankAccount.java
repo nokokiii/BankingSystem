@@ -4,10 +4,11 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class BankAccount {
     private final String accountNumber;
-    public double balance;
+    protected double balance;
 
     public BankAccount(double balance) {
         this.accountNumber = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
+        validateNonNegative(balance, "Balance cannot be negative");
         this.balance = balance;
     }
 
@@ -70,6 +71,12 @@ public abstract class BankAccount {
     public void transfer(BankAccount account, double amount) {
         validateTransfer(account, amount);
         performTransfer(account, amount);
+    }
+
+    // Getters
+
+    public double getBalance() {
+        return this.balance;
     }
 
     @Override

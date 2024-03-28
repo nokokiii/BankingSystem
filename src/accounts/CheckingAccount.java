@@ -1,12 +1,12 @@
 package accounts;
 
-public class checkingAccount extends BankAccount {
+public class CheckingAccount extends BankAccount {
     protected double transferFee;
     protected double withdrawalFee;
     protected double transferLimit;
     protected double withdrawalLimit;
 
-    public checkingAccount(double balance, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit) {
+    public CheckingAccount(double balance, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit) {
         super(balance);
         setTransferFee(transferFee);
         setWithdrawalFee(withdrawalFee);
@@ -32,23 +32,35 @@ public class checkingAccount extends BankAccount {
         this.balance -= amount + transferFee;
     }
 
+    // Transfer methods
+    @Override
+    protected void validateTransfer(BankAccount account, double amount) {
+        validateBankAccount(account);
+        double transferFee = amount * this.transferFee;
+        if (amount + transferFee > this.balance) {
+            throw new IllegalArgumentException("Insufficient funds");
+        } else if (amount > this.transferLimit) {
+            throw new IllegalArgumentException("Amount exceeds maximum transfer amount");
+        }
+    }
+
     // Setters
-    public void setTransferFee(double transferFee) {
+    private void setTransferFee(double transferFee) {
         validateNonNegative(transferFee, "Transfer fee cannot be negative");
         this.transferFee = transferFee;
     }
 
-    public void setWithdrawalFee(double withdrawalFee) {
+    private void setWithdrawalFee(double withdrawalFee) {
         validateNonNegative(withdrawalFee, "Withdrawal fee cannot be negative");
         this.withdrawalFee = withdrawalFee;
     }
 
-    public void setTransferLimit(double transferLimit) {
+    private void setTransferLimit(double transferLimit) {
         validateNonNegative(transferLimit, "Transfer limit cannot be negative");
         this.transferLimit = transferLimit;
     }
 
-    public void setWithdrawalLimit(double withdrawalLimit) {
+    private void setWithdrawalLimit(double withdrawalLimit) {
         validateNonNegative(withdrawalLimit, "Withdrawal limit cannot be negative");
         this.withdrawalLimit = withdrawalLimit;
     }
