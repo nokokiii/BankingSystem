@@ -9,11 +9,15 @@ public abstract class BankAccount {
         this.balance = balance;
     }
 
+    protected void validateNonNegative(double value, String message) {
+        if (value < 0) {
+            throw new IllegalArgumentException(message);
+        }
+    }
+
     // Deposit methods
     protected void validateDeposit(double amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        }
+        validateNonNegative(amount, "Amount cannot be negative");
     }
 
     protected void performDeposit(double amount) {
@@ -27,9 +31,8 @@ public abstract class BankAccount {
 
     // Withdrawal methods
     protected void validateWithdrawal(double amount) {
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        } else if (amount > this.balance) {
+        validateNonNegative(amount, "Amount cannot be negative");
+        if (amount > this.balance) {
             throw new IllegalArgumentException("Insufficient funds");
         }
     }
@@ -54,15 +57,11 @@ public abstract class BankAccount {
     // Transfer methods
     protected void validateTransfer(BankAccount account, double amount) {
         validateBankAccount(account);
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        } else if (amount > this.balance) {
-            throw new IllegalArgumentException("Insufficient funds");
-        }
+        validateWithdrawal(amount);
     }
 
     protected void performTransfer(BankAccount account, double amount) {
-        this.balance -= amount;
+        performWithdrawal(amount);
         account.deposit(amount);
     }
 
