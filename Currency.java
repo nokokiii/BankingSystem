@@ -21,12 +21,16 @@ public class Currency {
     }
 
     // Getters
+    public double getConvectedAmount(double amount) {
+        return amount * this.exchangeRate;
+    }
+
     public double getExchangeRate() {
-        return exchangeRate;
+        return this.exchangeRate;
     }
 
     @Override
     public String toString() {
-        return name;
+        return this.name;
     }
 }
