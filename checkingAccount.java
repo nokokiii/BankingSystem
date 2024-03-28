@@ -15,10 +15,9 @@ public class checkingAccount extends BankAccount {
     // Withdrawal methods
     @Override
     protected void validateWithdrawal(double amount) {
+        validateNonNegative(amount, "Amount cannot be negative");
         double transferFee = amount * this.transferFee;
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        } else if (amount + transferFee > this.balance) {
+        if (amount + transferFee > this.balance) {
             throw new IllegalArgumentException("Insufficient funds");
         } else if (amount > this.withdrawalLimit) {
             throw new IllegalArgumentException("Amount exceeds maximum withdrawal amount");
@@ -31,54 +30,24 @@ public class checkingAccount extends BankAccount {
         this.balance -= amount + transferFee;
     }
 
-    // Transfer methods
-    @Override
-    protected void validateTransfer(BankAccount account, double amount) {
-        validateBankAccount(account);
-
-        double transferFee = amount * this.transferFee;
-        if (amount < 0) {
-            throw new IllegalArgumentException("Amount cannot be negative");
-        } else if (amount + transferFee > this.balance) {
-            throw new IllegalArgumentException("Insufficient funds");
-        } else if (amount > this.transferLimit) {
-            throw new IllegalArgumentException("Amount exceeds maximum transfer amount");
-        }
-    }
-
-    @Override
-    protected void performTransfer(BankAccount account, double amount) {
-        double transferFee = amount * this.transferFee;
-        this.balance -= amount + transferFee;
-        account.deposit(amount);
-    }
-
     // Setters
     public void setTransferFee(double transferFee) {
-        if (transferFee < 0) {
-            throw new IllegalArgumentException("Transfer fee cannot be negative");
-        }
+        validateNonNegative(transferFee, "Transfer fee cannot be negative");
         this.transferFee = transferFee;
     }
 
     public void setWithdrawalFee(double withdrawalFee) {
-        if (withdrawalFee < 0) {
-            throw new IllegalArgumentException("Withdrawal fee cannot be negative");
-        }
+        validateNonNegative(withdrawalFee, "Withdrawal fee cannot be negative");
         this.withdrawalFee = withdrawalFee;
     }
 
     public void setTransferLimit(double transferLimit) {
-        if (transferLimit < 0) {
-            throw new IllegalArgumentException("Transfer limit cannot be negative");
-        }
+        validateNonNegative(transferLimit, "Transfer limit cannot be negative");
         this.transferLimit = transferLimit;
     }
 
     public void setWithdrawalLimit(double withdrawalLimit) {
-        if (withdrawalLimit < 0) {
-            throw new IllegalArgumentException("Withdrawal limit cannot be negative");
-        }
+        validateNonNegative(withdrawalLimit, "Withdrawal limit cannot be negative");
         this.withdrawalLimit = withdrawalLimit;
     }
 

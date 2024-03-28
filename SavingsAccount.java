@@ -18,10 +18,7 @@ public class SavingsAccount extends BankAccount {
 
     // Setters
     public void setInterestRate(double interestRate) {
-        if (interestRate < 0) {
-            throw new IllegalArgumentException("Interest rate cannot be negative");
-        }
-
+        validateNonNegative(interestRate, "Interest rate cannot be negative");
         this.interestRate = interestRate;
     }
 
