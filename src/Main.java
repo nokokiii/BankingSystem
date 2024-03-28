@@ -1,5 +1,3 @@
-package src.main;
-
 import src.main.accounts.SavingsAccount;
 import src.main.accounts.checkingAccount;
 
