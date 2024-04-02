@@ -11,26 +11,25 @@ public class PayOffTests {
 
     @Test
     public void testPayOff() {
-        account = new CreditCard(100, 100);
+        account = new CreditCard(0, 100);
+        account.withdraw(100);
         account.payOff(50);
-        assertEquals(150, account.getDebt(), 0.001);
+        assertEquals(50, account.getDebt(), 0.01);
+        assertEquals(0, account.getBalance(), 0.01);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testPayOffNegativeAmount() {
         account = new CreditCard(100, 100);
-        try {
-            account.payOff(-50);
-        } catch (IllegalArgumentException e) {
-            assertEquals(100, account.getDebt(), 0.001);
-        }
+        account.payOff(-50);
     }
 
     @Test
     public void testPayOffMoreThanDebt() {
-        account = new CreditCard(100, 100);
+        account = new CreditCard(0, 100);
+        account.withdraw(100);
         account.payOff(150);
-        assertEquals(0, account.getDebt(), 0.001);
-        assertEquals(50, account.getBalance(), 0.001);
+        assertEquals(0, account.getDebt(), 0.01);
+        assertEquals(50, account.getBalance(), 0.01);
     }
 }
