@@ -5,19 +5,8 @@ public class Currency {
     private final double exchangeRate;
 
     public Currency(String name, double exchangeRate) {
-        validateExchangeRate(exchangeRate);
         this.name = name;
         this.exchangeRate = exchangeRate;
-    }
-
-    /**
-     * Validate the exchange rate
-     * @param value The exchange rate to validate
-     */
-    protected void validateExchangeRate(double value) {
-        if (value < 0) {
-            throw new IllegalArgumentException("Exchange rate cannot be negative");
-        }
     }
 
     // Getters

@@ -14,7 +14,6 @@ public abstract class BankAccount {
 
     public BankAccount(double balance, String pin) {
         this.accountNumber = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
-        validateNonNegative(balance, "Balance cannot be negative");
         this.balance = balance;
         this.pin = pin;
     }
