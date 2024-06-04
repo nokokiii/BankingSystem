@@ -1,6 +1,6 @@
 package accountTests.CreditCard;
 
-import accounts.CreditCard;
+import BankingSystem.accounts.CreditCard;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

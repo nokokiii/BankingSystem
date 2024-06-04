@@ -1,6 +1,6 @@
 package accountTests.SavingAccount;
 
-import accounts.SavingsAccount;
+import BankingSystem.accounts.SavingsAccount;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

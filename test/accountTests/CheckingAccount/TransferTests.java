@@ -1,6 +1,6 @@
 package accountTests.CheckingAccount;
 
-import accounts.CheckingAccount;
+import BankingSystem.accounts.CheckingAccount;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

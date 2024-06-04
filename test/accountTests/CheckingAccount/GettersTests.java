@@ -1,6 +1,6 @@
 package accountTests.CheckingAccount;
 
-import accounts.CheckingAccount;
+import BankingSystem.accounts.CheckingAccount;
 import org.junit.Before;
 import org.junit.Test;
 

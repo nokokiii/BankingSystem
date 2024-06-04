@@ -1,6 +1,4 @@
-import currency.Currency;
-import org.junit.Before;
-import org.junit.Test;
+import BankingSystem.currency.Currency;
 
 
 public class CurrencyTests {

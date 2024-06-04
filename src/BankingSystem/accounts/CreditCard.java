@@ -1,11 +1,11 @@
-package accounts;
+package BankingSystem.accounts;
 
 public class CreditCard extends BankAccount {
     private double creditLimit;
     private double debt;
 
-    public CreditCard(double balance, double creditLimit) {
-        super(balance);
+    public CreditCard(double balance, String pin, double creditLimit) {
+        super(balance, pin);
         setCreditLimit(creditLimit);
     }
 

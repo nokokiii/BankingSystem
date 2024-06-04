@@ -1,7 +1,8 @@
-import accounts.*;
-
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, world!");
+        App app = new App();
+
+        System.out.println("Welcome to the BankingSystem.Bank.Bank App!");
+        app.start();
     }
 }

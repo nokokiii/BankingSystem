@@ -1,10 +1,10 @@
-package accounts;
+package BankingSystem.accounts;
 
 public class SavingsAccount extends BankAccount {
     private double interestRate;
 
-    public SavingsAccount(double balance, double interestRate) {
-        super(balance);
+    public SavingsAccount(double balance, String pin, double interestRate) {
+        super(balance, pin);
         setInterestRate(interestRate);
     }
 
@@ -33,4 +33,3 @@ public class SavingsAccount extends BankAccount {
         return this.interestRate;
     }
 }
-

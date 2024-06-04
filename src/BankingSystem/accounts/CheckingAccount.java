@@ -1,4 +1,4 @@
-package accounts;
+package BankingSystem.accounts;
 
 public class CheckingAccount extends BankAccount {
     protected double transferFee;
@@ -6,8 +6,8 @@ public class CheckingAccount extends BankAccount {
     protected double transferLimit;
     protected double withdrawalLimit;
 
-    public CheckingAccount(double balance, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit) {
-        super(balance);
+    public CheckingAccount(double balance, String pin, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit) {
+        super(balance, pin);
         setTransferFee(transferFee);
         setWithdrawalFee(withdrawalFee);
         setTransferLimit(transferLimit);

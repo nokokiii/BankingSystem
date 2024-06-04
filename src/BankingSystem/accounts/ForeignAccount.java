@@ -1,12 +1,17 @@
-package accounts;
+package BankingSystem.accounts;
 
-import currency.Currency;
+import BankingSystem.currency.Currency;
+import BankingSystem.transaction.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ForeignAccount extends CheckingAccount {
     private final Currency currency;
+    private List<Transaction> transactions = new ArrayList<>();
 
-    public ForeignAccount(double balance, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit, Currency currency) {
-        super(balance, transferFee, withdrawalFee, withdrawalLimit, transferLimit);
+    public ForeignAccount(double balance, String pin, double transferFee, double withdrawalFee, double withdrawalLimit, double transferLimit, Currency currency) {
+        super(balance, pin, transferFee, withdrawalFee, withdrawalLimit, transferLimit);
         this.currency = currency;
     }
 
@@ -40,6 +45,7 @@ public class ForeignAccount extends CheckingAccount {
     public void transfer(BankAccount account, double amount) {
         validateTransfer(account, amount);
         performTransfer(account, amount);
+        transactions.add(new Transaction("Out", account, amount));
     }
 
     // Getters

@@ -1,15 +1,22 @@
-package accounts;
+package BankingSystem.accounts;
 
+import BankingSystem.transaction.Transaction;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class BankAccount {
     private final String accountNumber;
+    private final String pin;
+    private final List<Transaction> transactions = new ArrayList<>();
     protected double balance;
 
-    public BankAccount(double balance) {
+    public BankAccount(double balance, String pin) {
         this.accountNumber = String.valueOf(ThreadLocalRandom.current().nextInt(100000, 1000000));
         validateNonNegative(balance, "Balance cannot be negative");
         this.balance = balance;
+        this.pin = pin;
     }
 
     protected void validateNonNegative(double value, String message) {
@@ -71,12 +78,26 @@ public abstract class BankAccount {
     public void transfer(BankAccount account, double amount) {
         validateTransfer(account, amount);
         performTransfer(account, amount);
+        addTransaction(new Transaction("Out", account, amount));
+        account.addTransaction(new Transaction("In", this, amount));
+    }
+
+    public void addTransaction(Transaction transaction) {
+        transactions.add(transaction);
     }
 
     // Getters
 
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
     public double getBalance() {
         return this.balance;
+    }
+
+    public String getPin() {
+        return this.pin;
     }
 
     @Override
